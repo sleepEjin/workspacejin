@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="insertBook">
+	INSERT INTO BOOK
+	VALUES(SEQ_BOOK_ID.NEXTVAL,
+	?,
+	?,
+	?
+	)
+</entry>
+
+<entry key="updateBook">
+	UPDATE BOOK
+		SET AUTHOR=?
+			PUBLISHER=?
+		WHERE TITLE=?
+</entry>
+
+<entry key="deleteBook">
+	DELETE FROM BOOK
+	WHERE TITLE=? AND AUTHOR=?
+</entry>
+
+<entry key="selectBookList">
+	SELECT * FROM BOOK
+</entry>
+
+<entry key="searchBook">
+	SELECT * FROM BOOK
+	WHERE TITLE LIKE '%' || ? || '%'
+</entry>
+
+</properties>
