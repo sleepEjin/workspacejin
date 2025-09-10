@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영역관련태그</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+        span{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+</style>
+</head>
+<body>
+    <!--
+        블럭요소 : 한줄 단위로 영역을 차지함.
+                    줄바꿈이 적용되어 이미 존재하는 태그의 다음줄에 다음영역이 잡힘.
+                    (p,pre,div,h...)
+        인라인요소 : content(내용) 영역에 해당하는 부분만 영역을 차지하는 요소
+                    줄바꿈이 적용되징 않아 다음영역이 바로 옆으로 잡힘
+                    (b, mark, s, img, span...)
+    -->
+    <h1>영역관련태그</h1>
+    <h2>div태그와 span태그의 차이점1 : 줄바꿈처리</h2>
+
+    <div style="background: red;">첫번째 영역</div>
+    <div style="background: orange;">두번째 영역</div>
+    <div style="background: yellow;">세번째 영역</div>
+
+    <h3>span태그</h3>
+    <p>span태그는 인라인 요소로 content 영역만 차지(줄바꿈 발생x)</p>
+    <span style="background: red;">첫번째 영역</span>
+    <span style="background: orange;">두번째 영역</span>
+    <span style="background: yellow;">세번째 영역</span>
+
+    <h2>div태그와 span태그의 차이점2 : 영역지정방식</h2>
+    <h3>div 태그 : 사각형 박스로 영역을 지정</h3>
+    <div style="height: auto;">
+        어제는 대구와 경북 남부를 중심으로 꽤 많은 비가 내렸습니다.
+
+오늘도 오전까지 대체로 하늘빛 흐리겠고요.
+우리 지역에는 오늘 오전까지 5~30mm의 비가 가끔 예상됩니다.
+곳에 따라 시간당 10mm 안팎의 다소 강한 비가 내리는 곳도 있겠고요.
+동해남부 해상에는 오늘까지 돌풍과 함께 천둥, 번개가 치는 곳도 있어 해상 안전사고에 유의하셔야겠습니다.
+비가 차차 잦아들면 기온이 다소 올라갑니다.
+    </div>
+    <h3>span 태그 : 문장 단위로 영역을 지정</h3>
+    <span style="height: auto;">
+        오늘도 오전까지 대체로 하늘빛 흐리겠고요.
+우리 지역에는 오늘 오전까지 5~30mm의 비가 가끔 예상됩니다.
+곳에 따라 시간당 10mm 안팎의 다소 강한 비가 내리는 곳도 있겠고요.
+동해남부 해상에는 오늘까지 돌풍과 함께 천둥, 번개가 치는 곳도 있어 해상 안전사고에 유의하셔야겠습니다.
+비가 차차 잦아들면 기온이 다소 올라갑니다.
+    </span>
+
+    <hr>
+
+    <h1>iframe</h1>
+    <p>웹문서 안에 다른 웹페이지를 추가하는 태그(인라인요소)</p>
+    <iframe src="./04_미디어관련태그.html" frameborder="0" width="300" height="300"></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/PbLxIaXRtnc?si=Sf5DbKjgqrKWJqsQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</body>
+</html>
