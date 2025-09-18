@@ -19,7 +19,7 @@ var isTrue = true;
 console.log(name);
 
 age="오십";
-name = "김수민"
+name = "김수민";
 console.log(name);
 
 /**
