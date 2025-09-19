@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice5</title>
+</head>
+<style>
+    textarea{
+        resize: none;
+        width: 300px;
+        height: 100px;
+    }
+
+    #area{
+        width: 400px;
+        height: 200px;
+        border: 1px solid black;
+    }
+</style>
+<body>
+    <h2>Practice5</h2>
+    <form action="">
+        <fieldset>
+            <legend>구매정보</legend>
+            <ul>
+                <li>구매자 : <input type="text" placeholder="구매자의 이름을 입력하세요"></li>
+                <li>상품명 : <input type="text" placeholder="구매 상품명을 입력하세요"></li>
+                <li>가격 : <input type="text" placeholder="구매 가격을 입력하세요"></li>
+                <li>구매 수량 : <input type="number" placeholder="최소 10" min="10" max="100"></li>
+                <li>납품 등급 : <input type="range" min="1" max="9" step="2" value="1"></li>
+                <li><textarea name="descript"></textarea></li>
+            </ul>
+        </fieldset>
+        <button onclick="">입력 값 출력하기</button>
+        <br><br>
+        <div id="area"></div>
+    </form>
+
+    <script>
+
+    </script>
+</body>
+</html>
