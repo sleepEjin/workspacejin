@@ -31,12 +31,17 @@
         <li><textarea name="descript"></textarea></li>
       </ul>
     </fieldset>
-    <button type="button" onclick="purchase()">입력 값 출력하기</button>
+    </form>
+
+    <button onclick="purchase()">입력 값 출력하기</button>
     <br><br>
     <div class="area" id="purchase-result"></div>
-  </form>
+  
 
   <script>
+    /*
+      Element.children : 특정 요소 내부에 있는 요소 목록을 배열 형태로 나열
+    */
     function purchase() {
       const purchaseInfo = document.querySelectorAll('input[name=info], textarea[name=descript]');
       
