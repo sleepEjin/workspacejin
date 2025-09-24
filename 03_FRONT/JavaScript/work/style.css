@@ -1,0 +1,225 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    background: linear-gradient(135deg, #647FBC, #FAFDD6);
+    padding: 20px;
+}
+
+button{
+    border: none;
+    outline: none;
+}
+
+.container{
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(255, 245, 245, 0.336);
+}
+
+header{
+    background: linear-gradient(45deg, #647FBC, #FAFDD6);
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+}
+
+header > h1{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+header >h3{
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.input-area{
+    display: flex;
+    padding: 10px;
+    
+    gap: 10px;
+}
+
+#input-description,
+#input-amount{
+    flex: 1;
+    padding: 13px;
+    border: 2px solid rgb(224, 224, 224);
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.choose-buttons{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.choose-buttons button{
+    padding: 8px 16px;
+    border: 2px solid rgb(224, 224, 224);
+    background: white;
+    color: rgb(201, 25, 25);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.choose-buttons button:focus,
+.choose-buttons button:hover{
+    background: rgb(37, 173, 37);
+    color: white;
+}
+
+.add-btn{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.add-btn button{
+    padding: 10px 45%;
+    background: #627db9;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-btn button:hover{
+    background: #496bb4;
+}
+
+.filter-buttons{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+    border-top: 1px solid rgb(224, 224, 224);
+}
+
+.filter-buttons button{
+    padding: 8px 16px;
+    border: 2px solid rgb(224, 224, 224);
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.filter-buttons button:focus,
+.filter-buttons button:hover{
+    background: #627db9;
+    color: white;
+}
+
+#total-view{
+    width: auto;
+    height: 100px;
+    display: flex;
+    background: rgb(245, 245, 245);
+    align-items: center;
+}
+
+.income,
+.cost,
+.left {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+}
+
+.money{
+    display: block;
+    margin-top: 5px;
+    justify-content: center;
+    color: rgb(37, 173, 37);
+    font-weight: bold;
+}
+
+.money-cost{
+    display: block;
+    margin-top: 5px;
+    justify-content: center;
+    color: red;
+    font-weight: bold;
+}
+
+.cost-list{
+    list-style: none;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.cost-list >li{
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    justify-content: left;
+    padding: 20px;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+.cost-list >li span{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    font-size: 12px;
+    color: rgb(204, 190, 190);
+    margin-bottom: 2px;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-date {
+    font-size: 12px;
+    color: rgb(160, 160, 160);
+    margin-bottom: 4px;
+}
+
+.item-text {
+    font-size: 16px;
+    color: #333;
+}
+
+.delete-btn{
+    position: absolute;
+    right: 10px;
+    padding: 8px 16px;
+    background: rgb(224, 99, 99);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.delete-btn:hover{
+    background: #d83c3c;
+}

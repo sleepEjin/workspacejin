@@ -25,7 +25,6 @@ const clearCompletedBtn = document.getElementById('clear-completed-btn'); //완�
 const todoInput = document.getElementById('todo-input'); //todo입력창
 const filterBtns = document.querySelectorAll('.filter-buttons button'); //필터 버튼 목록
 
-
 // ===== 초기화 함수 ========
 //웹이 시작될 때 실행되는 기본함수
 //이벤트 등록과 화면 렌더링을 담당

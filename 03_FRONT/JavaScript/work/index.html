@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가계부</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>가계부</h1>
+            <br>
+            <h3>현재 잔액</h3>
+        </header>
+        
+        <div class="input-area">
+            <input id="input-description" type="text" placeholder="내용을 입력하세요 (예: 점심값,월급)">
+            <input id="input-amount" type="number" placeholder="금액을 입력하세요" min="0" >
+        </div>
+        
+        <div class="choose-buttons">
+            <button class="active">수입</button>
+            <button>지출</button>
+        </div>
+
+        <div class="add-btn">
+            <button>추가하기</button>
+        </div>
+
+    <br>
+
+    <div class="filter-buttons">
+        <button>전체</button>
+        <button class="active">수입</button>
+        <button>지출</button>
+    </div>
+
+    <div id="total-view">
+        <div class="income">
+            총 수입
+            <div class="money">10,000원</div>
+        </div>
+        <div class="cost">
+            총 지출
+            <div class="money-cost">1,000원</div>
+        </div>
+        <div class="left">
+            잔액
+            <div class="money">90,000원</div>
+        </div>
+    </div>
+
+        <ul id="cost-list" class="cost-list">
+           <li>
+            <span>2025년 9월 22일</span>
+            급여
+            <button class="delete-btn">
+                삭제
+            </button>
+        </li>
+           <li>
+            <span>2025년 9월 22일</span>
+            점심
+            <button class="delete-btn">
+                삭제
+            </button>
+        </li>
+         </ul>
+    </div>
+
+    <script src="./script.js"></script>
+
+</body>
+</html>
