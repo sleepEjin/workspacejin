@@ -12,18 +12,15 @@ const balanceDisplay = document.querySelector('.left .money');
 const filterButtons = document.querySelectorAll('.filter-buttons button');
 
 // 상태 관리
-
 let transactions = [];
-let currentType = 'income'; // 기본은 수입
+let currentType = 'income';
 
 // 초기 실행
-
 loadFromLocalStorage();
 renderList(transactions);
 updateSummary();
 
 // 유틸 함수
-
 function generateId() {
   return Date.now();
 }
@@ -49,10 +46,9 @@ function getToday() {
 }
 
 // 렌더링
-
 function renderList(data) {
   list.innerHTML = '';
-  data.forEach((tx) => {
+  data.forEach(function(tx) {
     const li = document.createElement('li');
     li.dataset.id = tx.id;
     li.innerHTML = `
@@ -67,12 +63,12 @@ function renderList(data) {
 
 function updateSummary() {
   const income = transactions
-    .filter(tx => tx.type === 'income')
-    .reduce((sum, tx) => sum + Number(tx.amount), 0);
+    .filter(function(tx) { return tx.type === 'income'; })
+    .reduce(function(sum, tx) { return sum + Number(tx.amount); }, 0);
 
   const expense = transactions
-    .filter(tx => tx.type === 'expense')
-    .reduce((sum, tx) => sum + Number(tx.amount), 0);
+    .filter(function(tx) { return tx.type === 'expense'; })
+    .reduce(function(sum, tx) { return sum + Number(tx.amount); }, 0);
 
   const balance = income - expense;
 
@@ -82,18 +78,18 @@ function updateSummary() {
 }
 
 // 이벤트: 수입/지출 버튼 토글
-
-typeButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    typeButtons.forEach(b => b.classList.remove('active'));
+typeButtons.forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    typeButtons.forEach(function(b) {
+      b.classList.remove('active');
+    });
     btn.classList.add('active');
     currentType = btn.textContent === '수입' ? 'income' : 'expense';
   });
 });
 
 // 이벤트: 항목 추가
-
-addButton.addEventListener('click', () => {
+addButton.addEventListener('click', function() {
   const description = descriptionInput.value.trim();
   const amount = amountInput.value.trim();
 
@@ -104,7 +100,7 @@ addButton.addEventListener('click', () => {
 
   const newTransaction = {
     id: generateId(),
-    description,
+    description: description,
     amount: Number(amount),
     type: currentType,
     date: getToday()
@@ -121,11 +117,12 @@ addButton.addEventListener('click', () => {
 });
 
 // 이벤트: 삭제
-
-list.addEventListener('click', (e) => {
+list.addEventListener('click', function(e) {
   if (e.target.classList.contains('delete-btn')) {
     const id = e.target.closest('li').dataset.id;
-    transactions = transactions.filter(tx => tx.id != id);
+    transactions = transactions.filter(function(tx) {
+      return tx.id != id;
+    });
     saveToLocalStorage();
     renderList(transactions);
     updateSummary();
@@ -133,10 +130,11 @@ list.addEventListener('click', (e) => {
 });
 
 // 이벤트: 필터 버튼
-
-filterButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterButtons.forEach(b => b.classList.remove('active'));
+filterButtons.forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    filterButtons.forEach(function(b) {
+      b.classList.remove('active');
+    });
     btn.classList.add('active');
 
     const type = btn.textContent;
@@ -144,7 +142,9 @@ filterButtons.forEach(btn => {
     if (type === '전체') {
       renderList(transactions);
     } else {
-      const filtered = transactions.filter(tx => tx.type === (type === '수입' ? 'income' : 'expense'));
+      const filtered = transactions.filter(function(tx) {
+        return tx.type === (type === '수입' ? 'income' : 'expense');
+      });
       renderList(filtered);
     }
   });
