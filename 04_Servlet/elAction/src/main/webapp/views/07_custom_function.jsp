@@ -22,6 +22,6 @@
 	소문자 변환 : ${fn:toLowerCase(str)} <br>
 	
 	공백제거 : ${fn:trim("		hello	")} 또는 ${"		hello		".trim()}
-	<!-- 더 많은 jstl function 기능이 있지만 대부분 자바의 기본메서드로 대체가 가능하므로 기본메서드를 사용한다. -->
+	<!-- 더 많은 jstl function기능이 있지만 대부분 자바의 기본메서드로 대체가 가능하므로 기본메서드를 사용한다. -->
 </body>
 </html>
