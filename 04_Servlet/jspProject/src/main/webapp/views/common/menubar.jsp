@@ -113,8 +113,8 @@
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item"><a class="nav-link px-4" href="${pageContext.request.contextPath}/list.bo">HOME</a></li>
                 <li class="nav-item"><a class="nav-link px-4" href="">공지사항</a></li>
-                <li class="nav-item"><a class="nav-link px-4" href="">일반게시판</a></li>
-                <li class="nav-item"><a class="nav-link px-4" href="">사진게시판</a></li>
+                <li class="nav-item"><a class="nav-link px-4" href="${pageContext.request.contextPath}/views/board/listView.jsp">일반게시판</a></li>
+                <li class="nav-item"><a class="nav-link px-4" href="${pageContext.request.contextPath}/views/board/listView.jsp"">사진게시판</a></li>
             </ul>
         </div>
     </nav>

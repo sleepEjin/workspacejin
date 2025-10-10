@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertBoard">
+		INSERT INTO BOARD
+		(
+			BOARD_NO
+			BOARD_TYPE
+			CATEGORY_NO
+			BOARD_TITLE
+			BOARD_CONTENT
+		)
+		VALUES(
+			SEQ_BNO.NEXTVAL, 
+			?, 
+			?, 
+			?, 
+			?
+		)
+	</entry>
+	
+	<entry key="updateBoard">
+		UPDATE MEMBER
+		   SET PHONE = ?,
+			   EMAIL = ?,
+			   ADDRESS = ?,
+			   INTEREST = ?,
+			   MODIFY_DATE = SYSDATE
+		 WHERE MEMBER_ID = ?
+	</entry>
+	
+	<entry key="deleteBoard">
+		DELETE MEMBER
+		 WHERE MEMBER_PWD = ?
+	</entry>
+</properties>
