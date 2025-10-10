@@ -26,8 +26,9 @@ public class ListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//board목록을 가져와서 응답페이지로 전달
+		
+		request.getRequestDispatcher("");
 	}
 
 	/**
