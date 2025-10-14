@@ -13,16 +13,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class deleteController
+ * Servlet implementation class DeleteController
  */
-@WebServlet("/deleteController")
-public class deleteController extends HttpServlet {
+@WebServlet("/delete.me")
+public class DeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public deleteController() {
+    public DeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,19 +33,27 @@ public class deleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userPwd = request.getParameter("userPwd");
 		
-		Member deleteMember = Member.deleteCreateMember(userPwd);
+		HttpSession session = request.getSession();
+		Member loginMember = (Member)session.getAttribute("loginMember");
 		
-		deleteMember = new MemberService().deleteMember(deleteMember);
-		if(deleteMember == null) { //업데이트 실패
-			request.setAttribute("errorMsg", "회원정보 삭제에 실패하였습니다");
+		if(loginMember == null || !loginMember.getMemberPwd().equals(userPwd)) {
+			request.setAttribute("errorMsg", "정상적인 접근이 아닙니다.");
+			request.getRequestDispatcher("views/common/error.jsp").forward(request, response);
+			return;
+		}
+		
+		int result = new MemberService().deleteMember(loginMember.getMemberId());
+		
+		if(result == 0) { //업데이트 실패
+			request.setAttribute("errorMsg", "회원탈퇴에 실패하였습니다");
 			request.getRequestDispatcher("views/common/error.jsp").forward(request, response);
 		} else {
-			HttpSession session = request.getSession();
-			session.setAttribute("loginMember", deleteMember);
-			session.setAttribute("alertMsg", "성공적으로 수정하였습니다.");
+			session.removeAttribute("loginMember");
+			session.setAttribute("alertMsg", "성공적으로 탈퇴하였습니다.");
 			
-			response.sendRedirect(request.getContextPath() + "/myPage.me");
+			response.sendRedirect(request.getContextPath());
 		}
+	
 	}
 
 	/**

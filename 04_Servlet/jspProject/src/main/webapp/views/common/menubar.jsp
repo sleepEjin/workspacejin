@@ -99,7 +99,7 @@
 	                    <span class="fw-bold text-primary">${loginMember.memberName}님</span>의 방문을 환영합니다.
 	                </div>
 	                <div class="d-flex gap-2">
-	                    <a href="" class="btn btn-outline-primary btn-sm">마이페이지</a>
+	                    <a href="${pageContext.request.contextPath}/myPage.me" class="btn btn-outline-primary btn-sm">마이페이지</a>
 	                    <a href="${pageContext.request.contextPath}/logout.me" class="btn btn-outline-danger btn-sm">로그아웃</a>
 	                </div>
 	            </div>
@@ -111,10 +111,10 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link px-4" href="${pageContext.request.contextPath}/list.bo">HOME</a></li>
+                <li class="nav-item"><a class="nav-link px-4" href="${pageContext.request.contextPath}">HOME</a></li>
                 <li class="nav-item"><a class="nav-link px-4" href="">공지사항</a></li>
-                <li class="nav-item"><a class="nav-link px-4" href="${pageContext.request.contextPath}/views/board/listView.jsp">일반게시판</a></li>
-                <li class="nav-item"><a class="nav-link px-4" href="${pageContext.request.contextPath}/views/board/listView.jsp"">사진게시판</a></li>
+                <li class="nav-item"><a class="nav-link px-4" href="${pageContext.request.contextPath}/list.bo?cpage=1">일반게시판</a></li>
+                <li class="nav-item"><a class="nav-link px-4" href="">사진게시판</a></li>
             </ul>
         </div>
     </nav>

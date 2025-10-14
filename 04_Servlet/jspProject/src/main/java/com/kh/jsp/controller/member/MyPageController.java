@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * Servlet implementation class MyPageController
  */
-@WebServlet("/MyPageController")
+@WebServlet("/myPage.me")
 public class MyPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,8 +31,8 @@ public class MyPageController extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		if(session.getAttribute("loginMember") == null) {
-			session.setAttribute("alertMsg", "잘못된 접근입니다");
-			response.sendRedirect(request.getContextPath() + "/login.me");
+			session.setAttribute("alertMsg", "잘못된 접근입니다.");
+			response.sendRedirect(request.getContextPath());
 		} else {
 			request.getRequestDispatcher("views/member/myPage.jsp").forward(request, response);
 		}

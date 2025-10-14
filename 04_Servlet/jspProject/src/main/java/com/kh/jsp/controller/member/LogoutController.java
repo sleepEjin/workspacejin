@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * Servlet implementation class LogoutController
  */
-@WebServlet("/LogoutController")
+@WebServlet("/logout.me")
 public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,13 +28,12 @@ public class LogoutController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//로그아웃 -> session에서 loginMember 삭제, session 만료
+		//로그아웃 -> session에서 loginMember삭제, session만료
 		HttpSession session = request.getSession();
-		//session.invalidate(); 세션만료 -> session에 저장된 모든 데이터가 사라지고 새로운 세션데이터가 부여됨
+		//session.invalidate(); 세션만료 -> session에 저장된 모든 데이터가 사라지고 새로운 세션아이디가 부여됨
 		session.removeAttribute("loginMember");
 		
-		response.sendRedirect(request.getContextPath()); //jsp
-		
+		response.sendRedirect(request.getContextPath()); // /jsp
 	}
 
 	/**

@@ -2,6 +2,7 @@ package com.kh.jsp.controller.board;
 
 import java.io.IOException;
 
+import com.kh.jsp.model.vo.Attachment;
 import com.kh.jsp.model.vo.Board;
 import com.kh.jsp.service.BoardService;
 
@@ -40,8 +41,11 @@ public class DetailController extends HttpServlet {
 		Board board = boardService.selectBoardByBoardNo(boardNo);
 		
 		if(result > 0 && board != null) {
+			//at조회 -> request담기
+			Attachment at = boardService.selectAttachment(boardNo);
+			
 			request.setAttribute("board", board);
-			System.out.println(board);
+			
 			request.getRequestDispatcher("views/board/detailView.jsp").forward(request, response);
 		} else {
 			request.setAttribute("errorMsg", "정상적인 접근이 아닙니다.");

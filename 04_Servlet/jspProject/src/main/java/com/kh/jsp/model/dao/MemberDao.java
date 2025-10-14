@@ -185,7 +185,9 @@ public class MemberDao {
 		return m;
 	}
 	
-	public int deleteMember(Member m, Connection conn) {
+	public int deleteMember(String memberId, Connection conn) {
+		//update -> 처리된 행 수
+		
 		int result = 0;	
 		PreparedStatement pstmt = null;
 		
@@ -193,7 +195,7 @@ public class MemberDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, m.getMemberPwd());
+			pstmt.setString(1, memberId);
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
