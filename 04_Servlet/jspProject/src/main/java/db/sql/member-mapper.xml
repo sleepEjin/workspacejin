@@ -73,7 +73,14 @@
 		 WHERE MEMBER_ID = ?
 	</entry>
 	<entry key="deleteMember">
-		DELETE MEMBER
-		 WHERE MEMBER_PWD = ?
+		UPDATE MEMBER
+		   SET STATUS = 'N',
+			   MODIFY_DATE = SYSDATE
+		 WHERE MEMBER_ID = ?
+	</entry>
+	<entry key="idCheck">
+		SELECT COUNT(*) AS "COUNT"
+		  FROM MEMBER
+		 WHERE MEMBER_ID = ?
 	</entry>
 </properties>
