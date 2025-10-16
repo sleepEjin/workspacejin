@@ -16,13 +16,13 @@ import jakarta.servlet.http.HttpServletResponse;
  * Servlet implementation class enrollFormController
  */
 @WebServlet("/enrollForm.bo")
-public class enrollFormController extends HttpServlet {
+public class EnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public enrollFormController() {
+    public EnrollFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,7 +35,7 @@ public class enrollFormController extends HttpServlet {
 		
 		request.setAttribute("categories", categories);
 		
-		request.getRequestDispatcher("/views/board/enrollForm.jsp").forward(request, response);
+		request.getRequestDispatcher("views/board/enrollForm.jsp").forward(request, response);
 	}
 
 	/**
