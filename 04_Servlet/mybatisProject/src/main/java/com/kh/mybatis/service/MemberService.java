@@ -50,8 +50,6 @@ public class MemberService {
 		
 		int result = memberDao.updateMember(sqlSession, m);
 		
-		Member updateMember = null;
-		
 		if(result > 0) {
 			sqlSession.commit();
 		} else {

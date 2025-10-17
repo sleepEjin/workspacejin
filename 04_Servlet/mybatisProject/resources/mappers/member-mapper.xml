@@ -78,4 +78,20 @@
 			   MODIFY_DATE = SYSDATE
 		 WHERE MEMBER_ID = #{memberId}
  	</update>
+ 	<select id="selectMemberByMemberId" parameterType = "HashMap" resultMap="memberResultMap">
+		SELECT MEMBER_NO,
+				MEMBER_ID,
+				MEMBER_PWD,
+				MEMBER_NAME,
+				PHONE,
+				EMAIL,
+				ADDRESS,
+				INTEREST,
+				ENROLL_DATE,
+				MODIFY_DATE,
+				STATUS
+		FROM MEMBER
+	   WHERE MEMBER_ID = #{memberId}
+	     AND STATUS = 'Y'
+	</select>
 </mapper>
