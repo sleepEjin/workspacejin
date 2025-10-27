@@ -213,4 +213,30 @@ public class MemberController {
             return "common/error";
         }
     }
+
+    @GetMapping("/myPage.me")
+    public String myPage() {
+        return "member/myPage";
+    }
+
+    @GetMapping("/logout.me")
+    public String logout(HttpSession httpSession) {
+        httpSession.removeAttribute("loginMember");
+        return "redirect:/";
+    }
+    @PostMapping("/update.me")
+    public String updateMember(Member member, HttpSession httpSession, Model model) {
+
+        int result = memberService.updateMember(member);
+
+        if(result > 0){
+            httpSession.setAttribute("alertMsg", "회원정보 수정에 성공하였습니다.");
+            return "redirect:/";
+        } else {
+            model.addAttribute("errorMsg", "회원정보 수정에 실패하였습니다.");
+            return "common/error";
+        }
+    }
 }
+
+
