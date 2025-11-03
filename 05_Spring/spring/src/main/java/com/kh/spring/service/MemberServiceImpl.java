@@ -4,6 +4,7 @@ import com.kh.spring.model.mapper.MemberMapper;
 import com.kh.spring.model.vo.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.HandlerAdapter;
 
 @Service //@Component보다 더 구체화해서 service객체에 알맞게 bean등록
 public class MemberServiceImpl implements MemberService {
@@ -32,11 +33,5 @@ public class MemberServiceImpl implements MemberService {
         spring과 함께 사용할 때에는 트랜잭션처리를 스프링이 자동으로 관리한다.
          */
         return memberMapper.addMember(member);
-    }
-
-    @Override
-    public int updateMember(Member member) {
-
-        return memberMapper.updateMember(member);
     }
 }

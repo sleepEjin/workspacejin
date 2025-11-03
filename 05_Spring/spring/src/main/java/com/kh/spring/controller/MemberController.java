@@ -51,7 +51,7 @@ public class MemberController {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public MemberController(MemberService memberService,  BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public MemberController(MemberService memberService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.memberService = memberService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
@@ -164,11 +164,11 @@ public class MemberController {
         //loginMember.getMemberPwd() -> 암호화 된 pwd
         //bCryptPasswordEncoder.matches(평문, 암호문) -> 해당 비밀번호가 암호화된 비밀번호와 일치하면 true/ 아니면 false반환
 
-        if(loginMember == null) { //ID가 잘못된 상태
+        if (loginMember == null) { //ID가 잘못된 상태
             mv.addObject("errorMsg", "아이디를 찾을 수 없습니다.");
             mv.setViewName("common/error");
             //} else if(!loginMember.getMemberPwd().equals(memberPwd)){ //비밀번호 오류
-        } else if(!bCryptPasswordEncoder.matches(memberPwd, loginMember.getMemberPwd())){
+        } else if (!bCryptPasswordEncoder.matches(memberPwd, loginMember.getMemberPwd())) {
             mv.addObject("errorMsg", "비밀번호를 확인해 주세요.");
             mv.setViewName("common/error");
         } else {//로그인 성공
@@ -205,7 +205,7 @@ public class MemberController {
 
         int result = memberService.addMember(member);
 
-        if(result > 0){
+        if (result > 0) {
             httpSession.setAttribute("alertMsg", "회원가입에 성공하였습니다.");
             return "redirect:/";
         } else {
@@ -224,19 +224,4 @@ public class MemberController {
         httpSession.removeAttribute("loginMember");
         return "redirect:/";
     }
-    @PostMapping("/update.me")
-    public String updateMember(Member member, HttpSession httpSession, Model model) {
-
-        int result = memberService.updateMember(member);
-
-        if(result > 0){
-            httpSession.setAttribute("alertMsg", "회원정보 수정에 성공하였습니다.");
-            return "redirect:/";
-        } else {
-            model.addAttribute("errorMsg", "회원정보 수정에 실패하였습니다.");
-            return "common/error";
-        }
-    }
 }
-
-
