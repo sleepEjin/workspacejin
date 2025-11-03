@@ -20,7 +20,7 @@ import java.util.*;
 @Slf4j
 @Service
 public class BoardServiceImpl implements BoardService {
-
+    //보드매퍼
     private final BoardMapper boardMapper;
 
     @Autowired
