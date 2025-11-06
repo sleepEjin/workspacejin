@@ -3,6 +3,7 @@ package com.kh.spring.controller;
 import com.kh.spring.model.vo.Board;
 import com.kh.spring.model.vo.Category;
 import com.kh.spring.model.vo.Member;
+import com.kh.spring.model.vo.Reply;
 import com.kh.spring.service.BoardService;
 import jakarta.servlet.http.HttpSession;
 import org.apache.ibatis.annotations.Param;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -112,5 +114,22 @@ public class BoardController {
             model.addAttribute("errorMsg", "게시글 수정 실패");
             return "common/error";
         }
+    }
+
+    //댓글 작성(AJAX)
+    @PostMapping("/rinsert.bo")
+    @ResponseBody
+    public String insertReply(@RequestParam("boardNo") int boardNo,
+                              @RequestParam("content") String content,
+                              HttpSession session, Model model) {
+        Member m = (Member)session.getAttribute("loginMember");
+        Reply reply = new Reply();
+        reply.setRefBoardNo(boardNo);
+        reply.setReplyContent(content);
+        reply.setReplyWriter(m.getMemberNo());
+
+        int result = boardService.insertReply(reply);
+
+        return result > 0 ? "1" : "0";
     }
 }

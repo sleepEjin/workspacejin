@@ -1,10 +1,7 @@
 package com.kh.spring.service;
 
 import com.kh.spring.model.mapper.BoardMapper;
-import com.kh.spring.model.vo.Attachment;
-import com.kh.spring.model.vo.Board;
-import com.kh.spring.model.vo.Category;
-import com.kh.spring.model.vo.PageInfo;
+import com.kh.spring.model.vo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,6 +123,14 @@ public class BoardServiceImpl implements BoardService {
         return result;
     }
 
+    @Override
+    public int insertReply(Reply reply) {
+        return boardMapper.insertReply(reply);
+    }
+    /*
+        spring-boot-starter-web
+        -> jackson라이브러리를 기본적으로 탑재하고 있기 때문에 응답시 객체를 응답한다면 json 문자로 변환해준다.
+     */
     private String saveFile(MultipartFile file, String path) {
         String originName = file.getOriginalFilename();
         String currentTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
