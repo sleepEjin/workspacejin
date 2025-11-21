@@ -18,6 +18,6 @@
 	 
 	 <jsp:include page="common/menubar.jsp" />
 
-${memberId} / ${memberPwd}
+
 </body>
 </html>
