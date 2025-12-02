@@ -5,7 +5,6 @@ export const FormContainer = styled.div`
     gap: 12px;
     margin-bottom: 24px;
 `
-
 export const Select = styled.select`
     padding: 12px;
     border: 1px solid #e2e2e2;
@@ -13,7 +12,6 @@ export const Select = styled.select`
     border-radius: 4px;
     background: white;
     cursor: pointer;
-    color: black;
 
     &:focus{
         border-color: #5833ffff;
@@ -45,13 +43,5 @@ export const AddButton = styled.button`
     }
 `
 
-export const TodoListContainer = styled.ul`
-    list-style: none;
-`
 
-export const EmptyMessage = styled.div`
-    text-align: center;
-    padding: 36px;
-    color: gainsboro;
-    font-size: 16px;
-`
+
