@@ -2,20 +2,18 @@ package com.kh.jpa.test.entity;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "member")
+@NoArgsConstructor(access = AccessLevel.PROTECTED) //JPA 스펙상 필수
 @Entity
 public class Member {
+
     @Id
+    @Column(length = 30)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String userId;
 
@@ -28,10 +26,19 @@ public class Member {
     @Column(length = 254)
     private String email;
 
-    @Column(length = 1, check =)
-    private char gender;
-    private int age;
-    private LocalDateTime address;
-    private LocalDateTime enrollDate;
-    private char status;
+    @Column(length = 1)
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+    private Integer age;
+
+    @Column()
+    private String phone;
+
+    @Column(length = 100)
+    private String address;
+
+    public enum Gender {
+        M, F
+    }
 }
