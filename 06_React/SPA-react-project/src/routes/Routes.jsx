@@ -10,6 +10,7 @@ const AppRoutes = () => {
         <Routes>
             <Route path={ROUTES.HOME} element={<Layout />} >
                 <Route index element={<Home />}/>
+                <Route path='list' element={<IcelinkList />} />
             </Route>
         </Routes>
     </BrowserRouter>
