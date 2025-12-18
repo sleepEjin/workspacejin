@@ -4,12 +4,16 @@ import com.kh.jpa.enums.CommonEnums;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Builder @AllArgsConstructor
-@Getter
 @Entity
 @Table(name = "board")
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Board extends BaseTimeEntity {
+public class Board extends BaseTimeEntity{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long boardId;
@@ -28,11 +32,11 @@ public class Board extends BaseTimeEntity {
     @Column(length = 100)
     private String changeName;
 
-    //@Builder.Default : 빌드패턴으로 객체 생성시 count 값이 없다면 기본값을 사용한다
+    //@Builder.Default : 빌드패턴으로 객체생서시 count값이 없다면 기본값을 사용한다.
     @Builder.Default
     private Integer count = 0;
 
-    @Column(length=1, nullable = false)
+    @Column(length = 1, nullable = false)
     @Enumerated(EnumType.STRING)
     @Builder.Default
     private CommonEnums.Status status = CommonEnums.Status.Y;
@@ -42,4 +46,29 @@ public class Board extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_writer", nullable = false)
     private Member member;
+
+    @OneToMany(mappedBy = "board",orphanRemoval = true,cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<BoardTag> boardTags =  new ArrayList<>();
+
+    public void changeMember(Member member) {
+        this.member = member;
+
+        if(!member.getBoards().contains(this))
+            member.getBoards().add(this);
+    }
+
+    public void changeFile(String originName, String changeName) {
+        if(originName != null) this.originName = originName;
+        if(changeName != null) this.changeName = changeName;
+    }
+
+    public void addTag(Tag tag){
+        BoardTag boardTag = BoardTag.builder()
+                .tag(tag)
+                .build();
+
+        boardTag.changeBoard(this);
+        this.boardTags.add(boardTag);
+    }
 }

@@ -5,9 +5,9 @@ import lombok.*;
 
 @Builder
 @AllArgsConstructor
-@Getter
 @Entity
-@Table(name = "boardTag")
+@Table(name = "board_tag")
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BoardTag {
 
@@ -16,12 +16,17 @@ public class BoardTag {
     private Long boardTagId;
 
     //==== 연관관계 ====
-    //게시글 태그 : 게시글 (N : 1)
+    //게시글태그 : 게시글 (N : 1)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="board_no", nullable = false)
+    @JoinColumn(name = "board_id", nullable = false)
     private Board board;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tag_id", nullable = false)
     private Tag tag;
+
+    public void changeBoard(Board board) {
+        this.board = board;
+    }
+
 }

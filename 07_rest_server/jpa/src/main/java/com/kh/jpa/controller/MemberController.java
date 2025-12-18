@@ -34,7 +34,30 @@ public class MemberController {
     //id로 회원조회
     @GetMapping("/{userId}")
     public ResponseEntity<MemberDto.Response> getMember(@PathVariable String userId) {
-        return ResponseEntity.ok(new MemberDto.Response());
+        return ResponseEntity.ok(memberService.getMemberByUserId(userId));
     }
 
+    //회원수정
+    @PutMapping("/{userId}")
+    public ResponseEntity<MemberDto.Response> updateMember(
+            @PathVariable String userId,
+            @RequestBody MemberDto.Update updateMemberDto) {
+
+        MemberDto.Response response = memberService.updateMember(userId, updateMemberDto);
+        return ResponseEntity.ok(response);
+    }
+
+    //회원삭제
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<String> deleteMember(@PathVariable String userId) {
+        memberService.deleteMember(userId);
+        return  ResponseEntity.ok("ok");
+    }
+
+    //이름으로 회원 검색
+    @GetMapping("/search")
+    public ResponseEntity<List<MemberDto.Response>> searchMemberByName(@RequestParam String keyword) {
+        return ResponseEntity.ok(memberService.getMembersByName(keyword));
+        //keyword로 userName 키워드 검색 후 결과값 반환
+    }
 }
